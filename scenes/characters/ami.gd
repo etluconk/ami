@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 	handle_camera()
 
 func handle_camera() -> void:
-	var zoom = lerpf($Camera2D.zoom, 1 - velocity.length() * 0.2, 0.25)
+	var zoom = lerpf($Camera2D.zoom.x, 1.3 - slide_mult * 0.35, 0.05)
 	$Camera2D.zoom.x = zoom
 	$Camera2D.zoom.y = zoom
 
