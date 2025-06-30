@@ -62,9 +62,9 @@ func handle_slide_mult() -> void:
 	$HUD/SlideJumpMultRange.value = slide_mult
 	$HUD/SlideTimerRange.value = $SlideTimer.time_left / $SlideTimer.wait_time
 
-	if (is_on_floor() and !sliding) or is_on_wall():
+	if (is_on_floor() and !sliding) or (!is_on_floor() and is_on_wall()):
 		slide_mult = 1
-	if is_on_wall():
+	if !is_on_floor() and is_on_wall():
 		sliding = false
 		velocity.x = get_wall_normal().x * bonk_velocity
 		velocity.y = max(-500, velocity.y)
