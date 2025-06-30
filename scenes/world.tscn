@@ -75,7 +75,7 @@ texture = ExtResource("1_q5onr")
 
 [node name="Mountains2" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.2, 0.2)
-repeat_size = Vector2(1000, 700)
+repeat_size = Vector2(1000, 0)
 repeat_times = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="Mountains2"]
