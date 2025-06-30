@@ -1,6 +1,5 @@
-[gd_scene load_steps=24 format=3 uid="uid://xxeohkhqfctj"]
+[gd_scene load_steps=23 format=3 uid="uid://xxeohkhqfctj"]
 
-[ext_resource type="Texture2D" uid="uid://ikfotj8sc16w" path="res://assets/backgrounds/mountains.jpg" id="1_71j4m"]
 [ext_resource type="Texture2D" uid="uid://c4xsn6r7txvl4" path="res://assets/backgrounds/stars.jpg" id="1_q5onr"]
 [ext_resource type="Texture2D" uid="uid://dmwudqwpxd82u" path="res://assets/backgrounds/snowy_mountain.png" id="2_e3hyu"]
 [ext_resource type="Texture2D" uid="uid://bwrp6db42pa31" path="res://assets/backgrounds/front_mountain.png" id="2_qfnet"]
@@ -73,16 +72,6 @@ repeat_times = 3
 [node name="Sprite2D" type="Sprite2D" parent="Stars"]
 scale = Vector2(2, 2)
 texture = ExtResource("1_q5onr")
-
-[node name="Mountains" type="Parallax2D" parent="."]
-visible = false
-scroll_scale = Vector2(0.1, 0.1)
-repeat_size = Vector2(1000, 700)
-repeat_times = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="Mountains"]
-position = Vector2(0, 201)
-texture = ExtResource("1_71j4m")
 
 [node name="Mountains2" type="Parallax2D" parent="."]
 scroll_scale = Vector2(0.2, 0.2)
