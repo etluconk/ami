@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://c5rl16cihk3uv"]
+
+[ext_resource type="PackedScene" uid="uid://pxvxywf1j2w" path="res://scenes/characters/ami.tscn" id="1_826wc"]
+[ext_resource type="AudioStream" uid="uid://ifq4cppwof05" path="res://assets/audio/music/peter.wav" id="2_2kiec"]
+
+[sub_resource type="Environment" id="Environment_2kiec"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.84
+glow_bloom = 0.07
+glow_blend_mode = 0
+fog_mode = 1
+fog_light_energy = 16.0
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_contrast = 1.57
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vddhm"]
+size = Vector2(9263, 194)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kiec"]
+size = Vector2(76, 474.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_826wc"]
+size = Vector2(747, 321.25)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uatbw"]
+font_size = 30
+font_color = Color(1, 0, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_826wc"]
+font_size = 20
+font_color = Color(0, 1, 1, 1)
+
+[node name="TestLevel1" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2kiec")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(360, 552)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(4241.5, 24)
+shape = SubResource("RectangleShape2D_vddhm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-430, -301.5)
+shape = SubResource("RectangleShape2D_2kiec")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1220, -36)
+shape = SubResource("RectangleShape2D_826wc")
+
+[node name="Ami" parent="." instance=ExtResource("1_826wc")]
+position = Vector2(172, 472)
+
+[node name="Tutorial" type="Node2D" parent="."]
+
+[node name="Jump" type="Label" parent="."]
+offset_left = 798.0
+offset_top = 223.0
+offset_right = 1122.0
+offset_bottom = 265.0
+text = "press z to leap of faith"
+label_settings = SubResource("LabelSettings_uatbw")
+
+[node name="JumpDetails" type="Label" parent="."]
+offset_left = 814.0
+offset_top = 291.0
+offset_right = 1165.0
+offset_bottom = 468.0
+text = "press z for long for long
+long jump is tall jump
+press z short time for less long jump"
+label_settings = SubResource("LabelSettings_826wc")
+
+[node name="Fall" type="Label" parent="."]
+offset_left = 1887.0
+offset_top = 203.0
+offset_right = 2211.0
+offset_bottom = 245.0
+text = "press nothing == fall"
+label_settings = SubResource("LabelSettings_uatbw")
+
+[node name="Slide" type="Label" parent="."]
+offset_left = 2346.0
+offset_top = 229.0
+offset_right = 2820.0
+offset_bottom = 316.0
+text = "slide: shift
+your finger if you can"
+label_settings = SubResource("LabelSettings_uatbw")
+
+[node name="SlideClarification" type="Label" parent="."]
+offset_left = 2718.0
+offset_top = 256.0
+offset_right = 3192.0
+offset_bottom = 343.0
+text = "sorry
+
+   press shift to slide"
+label_settings = SubResource("LabelSettings_uatbw")
+
+[node name="HorizontalMovement" type="Label" parent="."]
+offset_left = 177.0
+offset_top = 270.0
+offset_right = 535.0
+offset_bottom = 357.0
+text = "press arrows a move horizontally direction"
+label_settings = SubResource("LabelSettings_uatbw")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_2kiec")
+autoplay = true

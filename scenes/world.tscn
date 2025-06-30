@@ -1,0 +1,324 @@
+[gd_scene load_steps=24 format=3 uid="uid://xxeohkhqfctj"]
+
+[ext_resource type="Texture2D" uid="uid://ikfotj8sc16w" path="res://assets/backgrounds/mountains.jpg" id="1_71j4m"]
+[ext_resource type="Texture2D" uid="uid://c4xsn6r7txvl4" path="res://assets/backgrounds/stars.jpg" id="1_q5onr"]
+[ext_resource type="Texture2D" uid="uid://dmwudqwpxd82u" path="res://assets/backgrounds/snowy_mountain.png" id="2_e3hyu"]
+[ext_resource type="Texture2D" uid="uid://bwrp6db42pa31" path="res://assets/backgrounds/front_mountain.png" id="2_qfnet"]
+[ext_resource type="PackedScene" uid="uid://pxvxywf1j2w" path="res://scenes/characters/ami.tscn" id="2_rwgxs"]
+[ext_resource type="Texture2D" uid="uid://0oiqaj3axa4e" path="res://assets/backgrounds/isolated-wild-grasses-png.png" id="4_4mrxx"]
+[ext_resource type="Texture2D" uid="uid://c5xndkk00us0s" path="res://assets/characters/npc/crow.png" id="6_7r4gi"]
+[ext_resource type="Shader" uid="uid://v2xcn6x3eaq3" path="res://shader/hueshift.gdshader" id="6_jhx03"]
+[ext_resource type="Texture2D" uid="uid://dciacfop5hdt7" path="res://assets/backgrounds/tree_1.png" id="7_i7141"]
+[ext_resource type="Texture2D" uid="uid://fhg463lssvnc" path="res://assets/backgrounds/tree_2.png" id="8_4mrxx"]
+[ext_resource type="Texture2D" uid="uid://chiumvo4ew7bn" path="res://assets/platforming/mushroom.png" id="8_dss4m"]
+[ext_resource type="Texture2D" uid="uid://dbft4reqkhiw6" path="res://assets/platforming/table.png" id="9_dss4m"]
+[ext_resource type="Texture2D" uid="uid://nw4gr6m2pw8j" path="res://assets/platforming/float.png" id="10_dss4m"]
+
+[sub_resource type="Environment" id="Environment_e3hyu"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.84
+glow_bloom = 0.07
+glow_blend_mode = 0
+fog_mode = 1
+fog_light_energy = 16.0
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_brightness = 0.88
+adjustment_contrast = 1.57
+adjustment_saturation = 1.57
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7t5mc"]
+shader = ExtResource("6_jhx03")
+shader_parameter/Shift_Hue = 0.7
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xo05s"]
+shader = ExtResource("6_jhx03")
+shader_parameter/Shift_Hue = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhx03"]
+shader = ExtResource("6_jhx03")
+shader_parameter/Shift_Hue = 0.3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i7141"]
+size = Vector2(793, 116)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3hyu"]
+size = Vector2(356, 143)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5uuo"]
+size = Vector2(5942, 72)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8fc1"]
+shader = ExtResource("6_jhx03")
+shader_parameter/Shift_Hue = 0.7
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4mrxx"]
+size = Vector2(20, 349.778)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dss4m"]
+shader = ExtResource("6_jhx03")
+shader_parameter/Shift_Hue = 0.9
+
+[node name="World" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e3hyu")
+
+[node name="Stars" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.05, 0.05)
+repeat_size = Vector2(1350, 770)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Stars"]
+scale = Vector2(2, 2)
+texture = ExtResource("1_q5onr")
+
+[node name="Mountains" type="Parallax2D" parent="."]
+visible = false
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(1000, 700)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Mountains"]
+position = Vector2(0, 201)
+texture = ExtResource("1_71j4m")
+
+[node name="Mountains2" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(1000, 700)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Mountains2"]
+material = SubResource("ShaderMaterial_7t5mc")
+position = Vector2(0, 201)
+texture = ExtResource("2_e3hyu")
+
+[node name="MoreMountains" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(700, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="MoreMountains"]
+position = Vector2(0, 257)
+texture = ExtResource("2_qfnet")
+
+[node name="BigTree" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.6, 0.6)
+scroll_offset = Vector2(800, 0)
+repeat_size = Vector2(1500, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="BigTree"]
+material = SubResource("ShaderMaterial_xo05s")
+position = Vector2(230.382, -613.468)
+scale = Vector2(3.57341, 3.91445)
+texture = ExtResource("8_4mrxx")
+
+[node name="LilTree" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="LilTree"]
+material = SubResource("ShaderMaterial_jhx03")
+position = Vector2(280, 0)
+texture = ExtResource("8_4mrxx")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.228667, 5.5952e-07, 0.136268, 1)
+polygon = PackedVector2Array(-194, 176, 5736, 176, 5736, 857, -198, 770)
+
+[node name="MushroomBottom" type="StaticBody2D" parent="."]
+position = Vector2(1529, -191)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="MushroomBottom"]
+position = Vector2(202, 187.5)
+scale = Vector2(14.0714, 5.03636)
+texture = ExtResource("8_dss4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MushroomBottom"]
+position = Vector2(198.5, 141)
+shape = SubResource("RectangleShape2D_i7141")
+one_way_collision = true
+
+[node name="Crow" type="Sprite2D" parent="."]
+position = Vector2(1386, -220)
+scale = Vector2(0.104963, 0.114522)
+texture = ExtResource("6_7r4gi")
+
+[node name="Table" type="StaticBody2D" parent="."]
+position = Vector2(2504, -191)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="Table"]
+position = Vector2(1232, 368.5)
+scale = Vector2(12.3438, 5.42188)
+texture = ExtResource("9_dss4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table"]
+position = Vector2(1230.5, 251)
+shape = SubResource("RectangleShape2D_i7141")
+
+[node name="YupMiddleRight" type="StaticBody2D" parent="."]
+position = Vector2(1651, -629)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="YupMiddleRight"]
+position = Vector2(1231, 229)
+scale = Vector2(12.3438, 1.78125)
+texture = ExtResource("10_dss4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YupMiddleRight"]
+position = Vector2(1230.5, 229)
+shape = SubResource("RectangleShape2D_i7141")
+
+[node name="MushroomTop" type="StaticBody2D" parent="."]
+position = Vector2(394, -754)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="MushroomTop"]
+position = Vector2(1231.5, 285)
+scale = Vector2(14.0536, 5.56364)
+texture = ExtResource("8_dss4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MushroomTop"]
+position = Vector2(1230.5, 229)
+shape = SubResource("RectangleShape2D_i7141")
+one_way_collision = true
+
+[node name="YupMiddleLeft" type="StaticBody2D" parent="."]
+position = Vector2(669, -523)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="YupMiddleLeft"]
+position = Vector2(1229, 229)
+scale = Vector2(12.3438, 1.78125)
+texture = ExtResource("10_dss4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YupMiddleLeft"]
+position = Vector2(1230.5, 229)
+shape = SubResource("RectangleShape2D_i7141")
+
+[node name="YupLeft" type="StaticBody2D" parent="."]
+position = Vector2(-648, -390)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="YupLeft"]
+position = Vector2(1229, 229)
+scale = Vector2(12.3438, 1.78125)
+texture = ExtResource("10_dss4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YupLeft"]
+position = Vector2(1230.5, 229)
+shape = SubResource("RectangleShape2D_i7141")
+
+[node name="Yup Top" type="StaticBody2D" parent="."]
+position = Vector2(1826, -903)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="Yup Top"]
+position = Vector2(1229, 229)
+scale = Vector2(12.3438, 1.78125)
+texture = ExtResource("10_dss4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Yup Top"]
+position = Vector2(1230.5, 229)
+shape = SubResource("RectangleShape2D_i7141")
+
+[node name="Snake" type="StaticBody2D" parent="."]
+position = Vector2(2729, 62)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Snake"]
+position = Vector2(0, -6.5)
+scale = Vector2(6.25, 3.10909)
+texture = ExtResource("8_dss4m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Snake"]
+position = Vector2(4, -6.5)
+shape = SubResource("RectangleShape2D_e3hyu")
+one_way_collision = true
+
+[node name="Ami" parent="." instance=ExtResource("2_rwgxs")]
+position = Vector2(56, 27)
+
+[node name="Floor" type="StaticBody2D" parent="."]
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+position = Vector2(2773, 141)
+shape = SubResource("RectangleShape2D_e5uuo")
+
+[node name="Polygon2D" type="Polygon2D" parent="Floor"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_o8fc1")
+texture = ExtResource("4_4mrxx")
+texture_offset = Vector2(0, -42.52)
+texture_scale = Vector2(2, 2)
+polygon = PackedVector2Array(-198, 105, 5744, 106, 5743, 177, -198, 177)
+
+[node name="Tree2" type="StaticBody2D" parent="."]
+position = Vector2(-197, -130)
+scale = Vector2(2.02514, 1.6925)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree2"]
+texture = ExtResource("7_i7141")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree2"]
+position = Vector2(-8.3945, 5.31758)
+shape = SubResource("RectangleShape2D_4mrxx")
+
+[node name="Tree3" type="StaticBody2D" parent="."]
+position = Vector2(5748, -130)
+scale = Vector2(2.02514, 1.6925)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree3"]
+texture = ExtResource("7_i7141")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree3"]
+position = Vector2(6.41946, 5.31758)
+shape = SubResource("RectangleShape2D_4mrxx")
+
+[node name="Foreground" type="Parallax2D" parent="."]
+visible = false
+z_index = 5
+scroll_scale = Vector2(1.5, 1.5)
+scroll_offset = Vector2(0, 168)
+repeat_size = Vector2(2000, 0)
+repeat_times = 4
+
+[node name="Polygon2D2" type="Polygon2D" parent="Foreground"]
+texture_repeat = 2
+position = Vector2(0, -717.917)
+scale = Vector2(1, 5.36111)
+texture = ExtResource("4_4mrxx")
+texture_offset = Vector2(0, 220)
+texture_scale = Vector2(0.5, 2)
+polygon = PackedVector2Array(-198, 105, 5744, 106, 5743, 177, -198, 177)
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground"]
+position = Vector2(-21.4362, -195.5)
+scale = Vector2(1.8575, 1.8575)
+texture = ExtResource("7_i7141")
+
+[node name="Foreground2" type="Parallax2D" parent="."]
+z_index = 5
+scroll_scale = Vector2(2, 2)
+repeat_size = Vector2(3000, 0)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground2"]
+material = SubResource("ShaderMaterial_dss4m")
+position = Vector2(692.036, -463.5)
+scale = Vector2(3.7425, 3.7425)
+texture = ExtResource("7_i7141")

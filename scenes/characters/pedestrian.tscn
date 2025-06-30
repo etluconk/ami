@@ -1,0 +1,215 @@
+[gd_scene load_steps=15 format=3 uid="uid://bk2e3bjn3xdxc"]
+
+[ext_resource type="Texture2D" uid="uid://bdvho2vopvxof" path="res://assets/characters/pedestrians/ben/ben_idle.png" id="1_pbth4"]
+[ext_resource type="Script" uid="uid://c17kvp7feirhv" path="res://scenes/characters/pedestrian.gd" id="1_stqpo"]
+[ext_resource type="Texture2D" uid="uid://k6eyuj6oweti" path="res://assets/characters/pedestrians/ben/ben_walk_1.png" id="3_tdf4y"]
+[ext_resource type="Texture2D" uid="uid://dw000m1dpnlec" path="res://assets/characters/pedestrians/ben/ben_walk_2.png" id="4_aogag"]
+[ext_resource type="Texture2D" uid="uid://cvy07q5af22aw" path="res://assets/characters/pedestrians/ben/ben_walk_3.png" id="5_2e5tt"]
+[ext_resource type="Script" uid="uid://covy3levpkdam" path="res://homemade_components/platforming/gravity.gd" id="6_2e5tt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pbth4"]
+size = Vector2(14, 88)
+
+[sub_resource type="Animation" id="Animation_pbth4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteContainer/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteContainer/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eo6wt"]
+resource_name = "breathing"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteContainer/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.5, 0.396875), Vector2(0.830189, 0.35), Vector2(0.377358, 0.490625), Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteContainer/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(0.5, 0.5, 0.5, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 17.39), Vector2(0, 24.353), Vector2(0, 1.957), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_stqpo"]
+resource_name = "idle"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteContainer/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.433962, 0.525), Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteContainer/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -2.35), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2e5tt"]
+resource_name = "run"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpriteContainer/Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpriteContainer/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pbth4"]
+_data = {
+&"RESET": SubResource("Animation_pbth4"),
+&"breathing": SubResource("Animation_eo6wt"),
+&"idle": SubResource("Animation_stqpo"),
+&"run": SubResource("Animation_2e5tt")
+}
+
+[sub_resource type="GDScript" id="GDScript_2e5tt"]
+script/source = "@tool
+
+extends Node
+
+func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		$\"../SpriteContainer/Sprite2D\".texture = get_parent().idle_texture
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_2e5tt"]
+font_size = 30
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Pedestrian" type="CharacterBody2D"]
+collision_layer = 16
+script = ExtResource("1_stqpo")
+idle_texture = ExtResource("1_pbth4")
+walk_texture_1 = ExtResource("3_tdf4y")
+walk_texture_2 = ExtResource("4_aogag")
+walk_texture_3 = ExtResource("5_2e5tt")
+metadata/_edit_horizontal_guides_ = [81.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_pbth4")
+one_way_collision = true
+
+[node name="GravityComp" type="Node" parent="."]
+script = ExtResource("6_2e5tt")
+rise_gravity_strength = 2000.0
+fall_gravity_strength = 3000.0
+fall_velocity_cap = 2000.0
+metadata/_custom_type_script = "uid://covy3levpkdam"
+
+[node name="SpriteContainer" type="Node2D" parent="."]
+scale = Vector2(0.7, 0.7)
+
+[node name="Sprite2D" type="Sprite2D" parent="SpriteContainer"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_pbth4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pbth4")
+}
+autoplay = "RESET"
+
+[node name="WalkingLoopTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="RandStateChangeTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="PreviewSprite" type="Node" parent="."]
+script = SubResource("GDScript_2e5tt")
+
+[node name="RightGroundDetector" type="RayCast2D" parent="."]
+position = Vector2(11, 0)
+
+[node name="LeftGroundDetector" type="RayCast2D" parent="."]
+position = Vector2(-11, 0)
+
+[node name="VoiceLineSound" type="AudioStreamPlayer2D" parent="."]
+volume_db = 15.0
+
+[node name="TalkingIndicator" type="Label" parent="."]
+visible = false
+z_index = 50
+offset_left = -106.0
+offset_top = -79.0
+offset_right = 101.0
+offset_bottom = -37.0
+text = "im talking btw"
+label_settings = SubResource("LabelSettings_2e5tt")
+
+[connection signal="timeout" from="RandStateChangeTimer" to="." method="_on_rand_state_change_timer_timeout"]

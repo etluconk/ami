@@ -1,0 +1,39 @@
+[gd_scene load_steps=21 format=3 uid="uid://b7hw6nbfmndxj"]
+
+[ext_resource type="PackedScene" uid="uid://bk2e3bjn3xdxc" path="res://scenes/characters/pedestrian.tscn" id="1_j21wh"]
+[ext_resource type="Texture2D" uid="uid://ckev8iegq8dp3" path="res://assets/characters/pedestrians/kris/kris_idle.png" id="2_8c6p4"]
+[ext_resource type="AudioStream" uid="uid://dyyfgybbi01dr" path="res://assets/audio/pedestrians/kris/balls.wav" id="2_pjw0s"]
+[ext_resource type="Texture2D" uid="uid://ceiyqbhi0gybp" path="res://assets/characters/pedestrians/kris/kris_walk_1.png" id="3_dmxmx"]
+[ext_resource type="AudioStream" uid="uid://doqhda2plxhi1" path="res://assets/audio/pedestrians/kris/bike.wav" id="3_qbg87"]
+[ext_resource type="AudioStream" uid="uid://cr6ws6yybs2ta" path="res://assets/audio/pedestrians/kris/cough.wav" id="4_7i8mf"]
+[ext_resource type="Texture2D" uid="uid://dgtnqq26joodf" path="res://assets/characters/pedestrians/kris/kris_walk_2.png" id="4_eprlv"]
+[ext_resource type="Texture2D" uid="uid://chiuxyu18j8kb" path="res://assets/characters/pedestrians/kris/kris_walk_3.png" id="5_2613y"]
+[ext_resource type="AudioStream" uid="uid://bd44rd0dm6wlr" path="res://assets/audio/pedestrians/kris/execution.wav" id="5_fq7x1"]
+[ext_resource type="AudioStream" uid="uid://iwwemvjlninp" path="res://assets/audio/pedestrians/kris/granola.wav" id="6_43hox"]
+[ext_resource type="AudioStream" uid="uid://bnpuipnyo57x6" path="res://assets/audio/pedestrians/kris/wow.wav" id="7_f388m"]
+[ext_resource type="AudioStream" uid="uid://cow2efm1sd2mx" path="res://assets/audio/pedestrians/kris/poop.wav" id="8_nfteu"]
+[ext_resource type="AudioStream" uid="uid://cruk640bj3d17" path="res://assets/audio/pedestrians/kris/donut.wav" id="9_cmr0f"]
+[ext_resource type="AudioStream" uid="uid://qveog5ahrcx" path="res://assets/audio/pedestrians/kris/look out.wav" id="10_oe6ji"]
+[ext_resource type="AudioStream" uid="uid://mrrohgoun3by" path="res://assets/audio/pedestrians/kris/sneeze.wav" id="11_tar3d"]
+[ext_resource type="AudioStream" uid="uid://bppii114e4hgh" path="res://assets/audio/pedestrians/kris/suction.wav" id="12_13hwk"]
+[ext_resource type="AudioStream" uid="uid://db86xtjonjncl" path="res://assets/audio/pedestrians/kris/today.wav" id="13_f44yy"]
+[ext_resource type="AudioStream" uid="uid://kaxqr3u8twum" path="res://assets/audio/pedestrians/kris/toe.wav" id="14_86ctf"]
+[ext_resource type="AudioStream" uid="uid://ij7b26tlpedo" path="res://assets/audio/pedestrians/kris/pain.wav" id="15_c27r8"]
+[ext_resource type="AudioStream" uid="uid://ruib3b2usmke" path="res://assets/audio/pedestrians/kris/ow.wav" id="16_f2gnd"]
+
+[node name="Christopher" instance=ExtResource("1_j21wh")]
+idle_voice_lines = Array[Resource]([ExtResource("2_pjw0s"), ExtResource("3_qbg87"), ExtResource("4_7i8mf"), ExtResource("5_fq7x1"), ExtResource("6_43hox"), ExtResource("7_f388m"), ExtResource("8_nfteu")])
+wandering_voice_lines = Array[Resource]([ExtResource("3_qbg87"), ExtResource("9_cmr0f"), ExtResource("10_oe6ji"), ExtResource("5_fq7x1"), ExtResource("11_tar3d"), ExtResource("12_13hwk"), ExtResource("13_f44yy")])
+pondering_voice_lines = Array[Resource]([ExtResource("14_86ctf"), ExtResource("7_f388m"), ExtResource("15_c27r8"), ExtResource("16_f2gnd"), ExtResource("4_7i8mf")])
+chance_of_new_sound_on_state_change = 0.1
+idle_texture = ExtResource("2_8c6p4")
+walk_texture_1 = ExtResource("3_dmxmx")
+walk_texture_2 = ExtResource("4_eprlv")
+walk_texture_3 = ExtResource("5_2613y")
+run_speed = 200.0
+
+[node name="Sprite2D" parent="SpriteContainer" index="0"]
+texture = ExtResource("2_8c6p4")
+
+[node name="VoiceLineSound" parent="." index="9"]
+volume_db = 5.0

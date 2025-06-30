@@ -1,0 +1,24 @@
+[gd_scene load_steps=10 format=3 uid="uid://vrat74hsrryg"]
+
+[ext_resource type="PackedScene" uid="uid://bk2e3bjn3xdxc" path="res://scenes/characters/pedestrian.tscn" id="1_qvhbl"]
+[ext_resource type="AudioStream" uid="uid://conlc45mu1jrx" path="res://assets/audio/pedestrians/ben/chick_fil_a.wav" id="2_ptbg8"]
+[ext_resource type="AudioStream" uid="uid://bato6tdqrth12" path="res://assets/audio/pedestrians/ben/agony.wav" id="2_wogxy"]
+[ext_resource type="AudioStream" uid="uid://bi1wtgotuy4o" path="res://assets/audio/pedestrians/ben/sauce.wav" id="3_0avr3"]
+[ext_resource type="AudioStream" uid="uid://bfqy37fxi8qxv" path="res://assets/audio/pedestrians/ben/whack_ass_mixup.wav" id="4_qhua5"]
+[ext_resource type="AudioStream" uid="uid://cxf2q355m4xel" path="res://assets/audio/pedestrians/ben/balls.wav" id="5_tkfha"]
+[ext_resource type="AudioStream" uid="uid://cvyvvnka2y1pb" path="res://assets/audio/pedestrians/ben/intelligent.wav" id="7_ptbg8"]
+[ext_resource type="AudioStream" uid="uid://dhq083uscoaxl" path="res://assets/audio/pedestrians/ben/orange_thing.wav" id="8_0avr3"]
+[ext_resource type="AudioStream" uid="uid://c4735hhdl5spw" path="res://assets/audio/pedestrians/ben/release_me.wav" id="9_qhua5"]
+
+[node name="Benjamin" instance=ExtResource("1_qvhbl")]
+idle_voice_lines = Array[Resource]([ExtResource("2_ptbg8"), ExtResource("3_0avr3")])
+wandering_voice_lines = Array[Resource]([ExtResource("4_qhua5"), ExtResource("5_tkfha")])
+pondering_voice_lines = Array[Resource]([ExtResource("2_wogxy"), ExtResource("7_ptbg8"), ExtResource("8_0avr3"), ExtResource("9_qhua5")])
+chance_of_new_sound_on_state_change = 0.1
+run_speed = 250.0
+
+[node name="WalkingLoopTimer" parent="." index="4"]
+wait_time = 0.3
+
+[node name="VoiceLineSound" parent="." index="9"]
+attenuation = 4.59479

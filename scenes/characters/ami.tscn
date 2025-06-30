@@ -1,0 +1,549 @@
+[gd_scene load_steps=29 format=3 uid="uid://pxvxywf1j2w"]
+
+[ext_resource type="Script" uid="uid://ctebi886aamkj" path="res://scenes/characters/ami.gd" id="1_j2ope"]
+[ext_resource type="Script" uid="uid://covy3levpkdam" path="res://homemade_components/platforming/gravity.gd" id="1_n62p0"]
+[ext_resource type="Script" uid="uid://cspravpd3u4bj" path="res://homemade_components/platforming/jump.gd" id="3_l033n"]
+[ext_resource type="Script" uid="uid://bs1fmrgfcp58e" path="res://homemade_components/platforming/horizontal_movement.gd" id="4_efekf"]
+[ext_resource type="Texture2D" uid="uid://b8gawwtuh674h" path="res://assets/characters/ami/idle.png" id="5_to4g0"]
+[ext_resource type="Texture2D" uid="uid://iuhx03llf74f" path="res://assets/characters/ami/slid.png" id="6_j2ope"]
+[ext_resource type="Texture2D" uid="uid://d4lpstm6y23k3" path="res://assets/characters/ami/down air.png" id="7_jecro"]
+[ext_resource type="AudioStream" uid="uid://ck3x8a73ccy6s" path="res://assets/audio/ami/whoosh.wav" id="7_l033n"]
+[ext_resource type="AudioStream" uid="uid://g4trgmljuq8f" path="res://assets/audio/ami/down air.wav" id="8_efekf"]
+[ext_resource type="Texture2D" uid="uid://mtiupir8hc3u" path="res://assets/characters/ami/toe.png" id="9_to4g0"]
+[ext_resource type="AudioStream" uid="uid://hxicl4qvhn1" path="res://assets/audio/ami/teleport.wav" id="11_lsx6f"]
+[ext_resource type="Texture2D" uid="uid://cjsdq5pab62vf" path="res://assets/characters/ami/sprakle.png" id="12_lsx6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lheln"]
+size = Vector2(44, 20)
+
+[sub_resource type="Animation" id="Animation_j2ope"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_to4g0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.875, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vr1v7"]
+resource_name = "down air"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_jecro"), ExtResource("5_to4g0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.875, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_n62p0"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_to4g0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.54, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.95, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.54, 1),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0.5), Vector2(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_l033n"]
+resource_name = "jump"
+length = 0.50005
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, -16.5), Vector2(0, 7.5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.671875, 1.45312), Vector2(1.54688, 1.19531), Vector2(0.484375, 1.57031), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_to4g0")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lheln"]
+resource_name = "slide"
+length = 0.750013
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.32693, 0.45193),
+"transitions": PackedFloat32Array(-0.25, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(2.01562, 0.609375), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.32693, 0.45193),
+"transitions": PackedFloat32Array(-0.25, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 3), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.45193),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_j2ope"), ExtResource("5_to4g0")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lsx6f"]
+resource_name = "bonk"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_to4g0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.875, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 12.5664]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_efekf"]
+_data = {
+&"RESET": SubResource("Animation_j2ope"),
+&"bonk": SubResource("Animation_lsx6f"),
+&"down air": SubResource("Animation_vr1v7"),
+&"idle": SubResource("Animation_n62p0"),
+&"jump": SubResource("Animation_l033n"),
+&"slide": SubResource("Animation_lheln")
+}
+
+[sub_resource type="Animation" id="Animation_to4g0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlideSound:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="Animation" id="Animation_efekf"]
+resource_name = "pan"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlideSound:pitch_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.93333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 3.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_to4g0"]
+_data = {
+&"RESET": SubResource("Animation_to4g0"),
+&"pan": SubResource("Animation_efekf")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lsx6f"]
+bg_color = Color(0, 0.669073, 0.642234, 1)
+skew = Vector2(0.39, 0.14)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l1pm3"]
+bg_color = Color(1, 0.886879, 0.613962, 1)
+skew = Vector2(0.39, 0.14)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jecro"]
+bg_color = Color(0.167583, 0.000369115, 0.353196, 1)
+skew = Vector2(0.39, 0.14)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr1v7"]
+bg_color = Color(1, 0.302479, 0.500658, 1)
+skew = Vector2(0.39, 0.14)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jecro"]
+font_size = 40
+font_color = Color(1, 0, 0.105882, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Ami" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 17
+script = ExtResource("1_j2ope")
+bonk_velocity = 800.0
+slide_jump_velocity = 1500.0
+zorp_offset = 100.0
+
+[node name="GravityComp" type="Node" parent="."]
+script = ExtResource("1_n62p0")
+rise_gravity_strength = 2000.0
+fall_gravity_strength = 3000.0
+fall_velocity_cap = 2000.0
+metadata/_custom_type_script = "uid://covy3levpkdam"
+
+[node name="JumpComp" type="Node" parent="."]
+script = ExtResource("3_l033n")
+jump_velocity = 800.0
+metadata/_custom_type_script = "uid://cspravpd3u4bj"
+
+[node name="HorizontalMovementComp" type="Node" parent="."]
+script = ExtResource("4_efekf")
+top_speed = 300.0
+cap_velocity = false
+floor_start_rate = 4000.0
+floor_stop_rate = 4000.0
+air_start_rate = 4000.0
+air_stop_rate = 4000.0
+metadata/_custom_type_script = "uid://bs1fmrgfcp58e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_lheln")
+
+[node name="Toe1" type="Sprite2D" parent="."]
+position = Vector2(18, 2)
+texture = ExtResource("9_to4g0")
+
+[node name="Toe2" type="Sprite2D" parent="."]
+position = Vector2(-17, 2)
+texture = ExtResource("9_to4g0")
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.875, 1)
+texture = ExtResource("5_to4g0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_efekf")
+}
+autoplay = "idle"
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+volume_db = 3.0
+bus = &"Fun Mode"
+
+[node name="SlideSound" type="AudioStreamPlayer" parent="."]
+volume_db = -1.0
+pitch_scale = 0.5
+bus = &"Fun Mode"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SlideSound"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_to4g0")
+}
+
+[node name="WhooshSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_l033n")
+volume_db = 2.0
+pitch_scale = 1.53
+bus = &"Fun Mode"
+
+[node name="DownAirSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_efekf")
+volume_db = 3.0
+bus = &"Fun Mode"
+
+[node name="BonkSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_lsx6f")
+pitch_scale = 1.04
+
+[node name="ZorpSound" type="AudioStreamPlayer" parent="."]
+volume_db = 1.472
+
+[node name="ZorpTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="ZorpSprite" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.38167, 1.41667)
+texture = ExtResource("12_lsx6f")
+
+[node name="SlideTimer" type="Timer" parent="."]
+wait_time = 0.45
+one_shot = true
+
+[node name="SlideCooldownTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
+
+[node name="RotationSwitchTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="SlideTimerRange" type="ProgressBar" parent="HUD"]
+offset_left = 343.926
+offset_top = 463.0
+offset_right = 635.926
+offset_bottom = 501.0
+rotation = 0.0645772
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.167583, 0.000369115, 0.353196, 1)
+theme_override_constants/outline_size = 17
+theme_override_font_sizes/font_size = 50
+theme_override_styles/background = SubResource("StyleBoxFlat_lsx6f")
+theme_override_styles/fill = SubResource("StyleBoxFlat_l1pm3")
+max_value = 1.0
+step = 0.1
+show_percentage = false
+
+[node name="SlideJumpMultRange" type="ProgressBar" parent="HUD"]
+offset_left = 344.926
+offset_top = 404.508
+offset_right = 636.926
+offset_bottom = 473.508
+rotation = 0.0645772
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.167583, 0.000369115, 0.353196, 1)
+theme_override_constants/outline_size = 17
+theme_override_font_sizes/font_size = 50
+theme_override_styles/background = SubResource("StyleBoxFlat_jecro")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vr1v7")
+min_value = 1.0
+max_value = 2.0
+step = 0.1
+value = 1.0
+
+[node name="SlideJumpMultLabel" type="Label" parent="HUD"]
+offset_left = 330.926
+offset_top = 377.0
+offset_right = 784.926
+offset_bottom = 467.0
+rotation = 0.0436332
+text = "SLIDE  JUMP  MULT"
+label_settings = SubResource("LabelSettings_jecro")
+
+[connection signal="jumped" from="JumpComp" to="." method="_on_jumped"]
+[connection signal="timeout" from="ZorpTimer" to="." method="_on_zorp_timer_timeout"]
+[connection signal="timeout" from="SlideTimer" to="." method="_on_slide_timer_timeout"]
+[connection signal="timeout" from="RotationSwitchTimer" to="." method="_on_rotation_switch_timer_timeout"]

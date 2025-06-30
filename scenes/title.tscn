@@ -1,0 +1,140 @@
+[gd_scene load_steps=12 format=3 uid="uid://42nhwb6coo06"]
+
+[ext_resource type="Script" uid="uid://c643k6iljixa7" path="res://scenes/title.gd" id="1_4ignj"]
+[ext_resource type="Texture2D" uid="uid://ovxk6hvyvymr" path="res://assets/backgrounds/fire.jpg" id="2_wosw1"]
+[ext_resource type="AudioStream" uid="uid://bp065jpgbbdqq" path="res://assets/audio/music/scawy.wav" id="3_p6dhs"]
+[ext_resource type="Texture2D" uid="uid://disqf5ade2whc" path="res://assets/backgrounds/flame.webp" id="4_pyl7j"]
+
+[sub_resource type="Environment" id="Environment_wosw1"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.84
+glow_bloom = 0.07
+glow_blend_mode = 0
+fog_mode = 1
+fog_light_energy = 16.0
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_contrast = 1.57
+
+[sub_resource type="LabelSettings" id="LabelSettings_pvspv"]
+font_size = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wosw1"]
+bg_color = Color(0.788261, 0, 0.176846, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6dhs"]
+bg_color = Color(0, 0.698039, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pyl7j"]
+bg_color = Color(0, 0.412701, 0.794277, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3w7a"]
+bg_color = Color(0.287657, 0.26338, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4rr2b"]
+bg_color = Color(0.483827, 0.420873, 5.77569e-07, 1)
+
+[node name="Title" type="Node2D"]
+script = ExtResource("1_4ignj")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wosw1")
+
+[node name="Fire" type="Sprite2D" parent="."]
+position = Vector2(567.25, 253.5)
+scale = Vector2(1.69226, 2.16667)
+texture = ExtResource("2_wosw1")
+
+[node name="TitleText" type="Label" parent="."]
+offset_left = 139.0
+offset_top = 30.0
+offset_right = 823.0
+offset_bottom = 243.0
+text = "Peter the Cybernetic Toucan
+vs
+   ami"
+label_settings = SubResource("LabelSettings_pvspv")
+horizontal_alignment = 1
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 98.0
+offset_top = 288.0
+offset_right = 361.0
+offset_bottom = 467.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_p6dhs")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wosw1")
+text = "play gam"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 394.0
+offset_top = 287.0
+offset_right = 631.0
+offset_bottom = 466.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_pyl7j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b3w7a")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wosw1")
+text = "dont"
+
+[node name="SettingsButton" type="Button" parent="."]
+offset_left = 678.0
+offset_top = 356.0
+offset_right = 881.0
+offset_bottom = 490.0
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4rr2b")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_wosw1")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wosw1")
+text = "configuration
+settings
+menu button"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_p6dhs")
+autoplay = true
+
+[node name="Flame" type="Sprite2D" parent="."]
+position = Vector2(753, 233)
+scale = Vector2(0.297267, 0.267188)
+texture = ExtResource("4_pyl7j")
+
+[node name="Flame2" type="Sprite2D" parent="."]
+position = Vector2(262, 224)
+scale = Vector2(0.297267, 0.267188)
+texture = ExtResource("4_pyl7j")
+
+[node name="Flame3" type="Sprite2D" parent="."]
+position = Vector2(324, 279)
+scale = Vector2(0.297267, 0.267188)
+texture = ExtResource("4_pyl7j")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_button_pressed"]
